@@ -401,6 +401,188 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 
+/* ==========================================
+   3D NEURAL ENGAGEMENT BRAIN SECTION
+   ========================================== */
+.neural-section {
+    position: relative;
+    min-height: 100vh;
+    padding: 8rem 0;
+    overflow: hidden;
+    background: var(--bg-darker);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Subtle grid background */
+.neural-bg-grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(197, 168, 128, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(197, 168, 128, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* 3D Canvas container — standalone block above cards */
+.neural-canvas-wrap {
+    position: relative;
+    width: 100%;
+    height: 550px;
+    margin-bottom: 4rem;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: rgba(4, 4, 4, 0.6);
+}
+
+#brain-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Content */
+.neural-content {
+    position: relative;
+    z-index: 5;
+}
+
+/* Neural Pathway Cards */
+.neural-pathways {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.pathway-card {
+    position: relative;
+    background: rgba(16, 16, 17, 0.65);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(197, 168, 128, 0.12);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    overflow: hidden;
+    cursor: default;
+}
+
+.pathway-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-champagne), transparent);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+.pathway-card:hover::before {
+    opacity: 1;
+}
+
+.pathway-card:hover {
+    border-color: rgba(197, 168, 128, 0.35);
+    transform: translateY(-8px);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(197, 168, 128, 0.08),
+        inset 0 1px 0 rgba(197, 168, 128, 0.1);
+}
+
+/* Pulsing glow behind each card on hover */
+.pathway-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(197, 168, 128, 0.15), transparent 70%);
+    transform: translate(-50%, -50%) scale(0);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.pathway-card:hover .pathway-pulse {
+    transform: translate(-50%, -50%) scale(3);
+}
+
+.pathway-icon {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 1px solid rgba(197, 168, 128, 0.25);
+    background: rgba(197, 168, 128, 0.06);
+    color: var(--accent-champagne);
+    margin-bottom: 1.5rem;
+    transition: all 0.4s ease;
+}
+
+.pathway-card:hover .pathway-icon {
+    background: rgba(197, 168, 128, 0.15);
+    border-color: rgba(197, 168, 128, 0.5);
+    box-shadow: 0 0 25px rgba(197, 168, 128, 0.2);
+    transform: scale(1.1);
+}
+
+.pathway-title {
+    position: relative;
+    z-index: 1;
+    font-size: 0.85rem;
+    letter-spacing: 0.2em;
+    color: var(--accent-champagne);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.pathway-desc {
+    position: relative;
+    z-index: 1;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-weight: 300;
+    margin-bottom: 1.75rem;
+}
+
+
+/* Pathway card staggered reveal */
+.neural-pathways.active .pathway-card {
+    animation: cardReveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+.neural-pathways.active .pathway-card:nth-child(1) { animation-delay: 0.1s; }
+.neural-pathways.active .pathway-card:nth-child(2) { animation-delay: 0.25s; }
+.neural-pathways.active .pathway-card:nth-child(3) { animation-delay: 0.4s; }
+.neural-pathways.active .pathway-card:nth-child(4) { animation-delay: 0.55s; }
+
+@keyframes cardReveal {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 /* Section Common Styles */
 .section-header {
     border-bottom: 1px solid var(--border-color);
@@ -559,7 +741,6 @@ h1, h2, h3, h4, h5, h6 {
 /* Asymmetric Info Section (Capabilities) */
 .info-section {
     padding: 8rem 0;
-    border-top: 1px solid var(--border-color);
     background: var(--bg-darker);
 }
 
@@ -969,6 +1150,13 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @media (max-width: 1024px) {
+    .neural-pathways {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .neural-section {
+        min-height: auto;
+        padding: 6rem 0;
+    }
     .work-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
@@ -1013,6 +1201,21 @@ h1, h2, h3, h4, h5, h6 {
         margin-bottom: 1.5rem;
     }
     .hero-subtitle {
+        margin-bottom: 2rem;
+    }
+    
+    .neural-pathways {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .neural-header {
+        margin-bottom: 3rem;
+    }
+    .pathway-card {
+        padding: 2rem 1.5rem;
+    }
+    .neural-flow-line {
+        gap: 2rem;
         margin-bottom: 2rem;
     }
     

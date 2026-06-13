@@ -23,6 +23,9 @@
 
     <!-- Styling -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Three.js for 3D Brain Visualization -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 
 <body>
@@ -77,6 +80,8 @@
             </div>
         </section>
 
+
+
         <!-- Work Archive Section (Hairline Divided Editorial List) -->
         <section class="work-section" id="work">
             <div class="container">
@@ -103,7 +108,8 @@
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                     <polygon points="6 4 20 12 6 20 6 4"></polygon>
                                 </svg>
-                                <span class="font-mono" style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
                             </div>
                         </div>
                         <div class="work-card-details">
@@ -127,7 +133,8 @@
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                     <polygon points="6 4 20 12 6 20 6 4"></polygon>
                                 </svg>
-                                <span class="font-mono" style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
                             </div>
                         </div>
                         <div class="work-card-details">
@@ -151,7 +158,8 @@
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                     <polygon points="6 4 20 12 6 20 6 4"></polygon>
                                 </svg>
-                                <span class="font-mono" style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
                             </div>
                         </div>
                         <div class="work-card-details">
@@ -175,7 +183,8 @@
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                     <polygon points="6 4 20 12 6 20 6 4"></polygon>
                                 </svg>
-                                <span class="font-mono" style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
                             </div>
                         </div>
                         <div class="work-card-details">
@@ -199,7 +208,8 @@
                                 <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
                                     <polygon points="6 4 20 12 6 20 6 4"></polygon>
                                 </svg>
-                                <span class="font-mono" style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
                             </div>
                         </div>
                         <div class="work-card-details">
@@ -207,6 +217,86 @@
                             <h3 class="work-card-title font-serif">Dr. Rashel Essence</h3>
                             <span class="work-card-tech font-mono">Serum</span>
                         </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3D Neural Engagement Section -->
+        <section class="neural-section" id="neural-brain">
+            <div class="neural-bg-grid"></div>
+
+            <div class="container neural-content">
+
+                <!-- Section Header -->
+                <div class="section-header reveal-on-scroll">
+                    <span class="section-tag font-mono">02.5/ ENGAGEMENT DYNAMICS</span>
+                    <h2 class="section-title">Engineered for Response</h2>
+                </div>
+
+                <!-- 3D Brain Canvas (standalone block) -->
+                <div class="neural-canvas-wrap" id="neural-canvas-wrap">
+                    <canvas id="brain-canvas"></canvas>
+                </div>
+
+                <!-- Pathway Info Cards -->
+                <div class="neural-pathways reveal-on-scroll">
+
+                    <div class="pathway-card" data-pathway="attention">
+                        <div class="pathway-pulse"></div>
+                        <div class="pathway-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <circle cx="12" cy="12" r="3" />
+                                <path d="M12 5C5.636 5 2 12 2 12s3.636 7 10 7 10-7 10-7-3.636-7-10-7z" />
+                            </svg>
+                        </div>
+                        <h3 class="pathway-title font-mono">ATTENTION</h3>
+                        <p class="pathway-desc">Viewers are hooked in the first 0.3 seconds. Cinematic motion & color
+                            science demands instant focus.</p>
+                    </div>
+
+                    <div class="pathway-card" data-pathway="emotion">
+                        <div class="pathway-pulse"></div>
+                        <div class="pathway-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path
+                                    d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                            </svg>
+                        </div>
+                        <h3 class="pathway-title font-mono">EMOTION</h3>
+                        <p class="pathway-desc">Story driven visuals create deep emotional resonance, making your brand
+                            feel personal & unforgettable.</p>
+                    </div>
+
+                    <div class="pathway-card" data-pathway="desire">
+                        <div class="pathway-pulse"></div>
+                        <div class="pathway-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                            </svg>
+                        </div>
+                        <h3 class="pathway-title font-mono">DESIRE</h3>
+                        <p class="pathway-desc">Your product becomes irresistible through aspirational framing, sensory
+                            rich visuals & premium aesthetics.</p>
+                    </div>
+
+                    <div class="pathway-card" data-pathway="conversion">
+                        <div class="pathway-pulse"></div>
+                        <div class="pathway-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor"
+                                stroke-width="1.5">
+                                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                                <polyline points="22 4 12 14.01 9 11.01" />
+                            </svg>
+                        </div>
+                        <h3 class="pathway-title font-mono">CONVERSION</h3>
+                        <p class="pathway-desc">Every frame is engineered to turn viewers into buyers. The scroll stops,
+                            the click happens, the sale closes.</p>
                     </div>
 
                 </div>
@@ -250,7 +340,8 @@
                         <h3 class="info-item-title font-serif">Showcase Product Features</h3>
                         <p class="info-item-text">
                             Highlight and showcase key product features through dynamic, high impact video ads. Vibrant
-                            product visuals, detailed textures, and close up angles bring your packaging details to life and
+                            product visuals, detailed textures, and close up angles bring your packaging details to life
+                            and
                             explain benefits at a glance.
                         </p>
                     </div>
@@ -341,7 +432,8 @@
 
                     <div class="lightbox-section">
                         <h4 class="lightbox-section-label font-mono">COLOR PALETTE</h4>
-                        <div class="palette-swatches" id="lightbox-palette" style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
+                        <div class="palette-swatches" id="lightbox-palette"
+                            style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
                             <!-- Dynamic swatches -->
                         </div>
                     </div>

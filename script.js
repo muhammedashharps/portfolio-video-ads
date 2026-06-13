@@ -217,34 +217,9 @@ document.addEventListener('DOMContentLoaded', () => {
         let animationFrameId;
         let active = false;
 
-        // Resize handler to match container client dimensions
-        const resizeCanvas = () => {
-            const wrap = document.getElementById('neural-canvas-wrap');
-            if (wrap) {
-                canvas.width = wrap.clientWidth;
-                canvas.height = wrap.clientHeight;
-            }
-        };
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
-
-        // State variables
-        let state = 'walking'; // 'walking', 'hooked', 'drawn', 'clicking', 'celebrating', 'walking_off'
-        let animTime = 0;
-        let stateElapsedTime = 0;
-        let lastTime = 0;
-        let lastRingSpawn = 0;
-        let hasClicked = false;
-        let flowParticleTimer = 0;
-
-        let stickman = {
-            x: -40,
-            y: 0, // calculated from floorY
-            scale: 0.9,
-            angle: 0,
-            yOffset: 0
-        };
-
+        // Dimensions and layout variables
+        let logicalWidth = 0;
+        let logicalHeight = 0;
         let floorY = 0;
         let adCard = {
             x: 0,
@@ -255,13 +230,50 @@ document.addEventListener('DOMContentLoaded', () => {
             angle: 0
         };
 
-        const initScene = () => {
-            floorY = canvas.height * 0.72;
-            stickman.y = floorY;
-            adCard.x = canvas.width * 0.75;
-            adCard.y = canvas.height * 0.38;
+        let stickman = {
+            x: -40,
+            y: 0, // calculated from floorY
+            scale: 0.9,
+            angle: 0,
+            yOffset: 0
         };
+
+        const initScene = () => {
+            floorY = logicalHeight * 0.72;
+            stickman.y = floorY;
+            adCard.x = logicalWidth * 0.75;
+            adCard.y = logicalHeight * 0.38;
+        };
+
+        // Resize handler to match container client dimensions and handle high-DPI (Retina/Mobile) screens
+        const resizeCanvas = () => {
+            const wrap = document.getElementById('neural-canvas-wrap');
+            if (wrap) {
+                logicalWidth = wrap.clientWidth;
+                logicalHeight = wrap.clientHeight;
+                const dpr = window.devicePixelRatio || 1;
+                canvas.width = logicalWidth * dpr;
+                canvas.height = logicalHeight * dpr;
+                canvas.style.width = logicalWidth + 'px';
+                canvas.style.height = logicalHeight + 'px';
+                ctx.scale(dpr, dpr);
+            }
+        };
+        resizeCanvas();
         initScene();
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initScene();
+        });
+
+        // State variables
+        let state = 'walking'; // 'walking', 'hooked', 'drawn', 'clicking', 'celebrating', 'walking_off'
+        let animTime = 0;
+        let stateElapsedTime = 0;
+        let lastTime = 0;
+        let lastRingSpawn = 0;
+        let hasClicked = false;
+        let flowParticleTimer = 0;
 
         // Particles System
         let particles = [];
@@ -526,11 +538,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const dt = Math.min((timestamp - lastTime) / 1000, 0.1);
             lastTime = timestamp;
 
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            const dpr = window.devicePixelRatio || 1;
+            const logicalWidth = canvas.clientWidth;
+            const logicalHeight = canvas.clientHeight;
+            if (canvas.width !== logicalWidth * dpr || canvas.height !== logicalHeight * dpr) {
+                canvas.width = logicalWidth * dpr;
+                canvas.height = logicalHeight * dpr;
+                ctx.scale(dpr, dpr);
+            }
 
-            floorY = canvas.height * 0.72;
-            adCard.x = canvas.width * 0.75;
-            adCard.y = canvas.height * 0.38;
+            ctx.clearRect(0, 0, logicalWidth, logicalHeight);
+
+            floorY = logicalHeight * 0.72;
+            adCard.x = logicalWidth * 0.75;
+            adCard.y = logicalHeight * 0.38;
 
             animTime += dt;
             stateElapsedTime += dt;
@@ -539,16 +560,16 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.strokeStyle = 'rgba(197, 168, 128, 0.035)';
             ctx.lineWidth = 1;
             const gridSize = 50;
-            for (let x = 0; x < canvas.width; x += gridSize) {
+            for (let x = 0; x < logicalWidth; x += gridSize) {
                 ctx.beginPath();
                 ctx.moveTo(x, 0);
-                ctx.lineTo(x, canvas.height);
+                ctx.lineTo(x, logicalHeight);
                 ctx.stroke();
             }
-            for (let y = 0; y < canvas.height; y += gridSize) {
+            for (let y = 0; y < logicalHeight; y += gridSize) {
                 ctx.beginPath();
                 ctx.moveTo(0, y);
-                ctx.lineTo(canvas.width, y);
+                ctx.lineTo(logicalWidth, y);
                 ctx.stroke();
             }
 
@@ -557,7 +578,7 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.lineWidth = 2;
             ctx.beginPath();
             ctx.moveTo(0, floorY);
-            ctx.lineTo(canvas.width, floorY);
+            ctx.lineTo(logicalWidth, floorY);
             ctx.stroke();
 
             // 1. Update positions by state
@@ -572,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     lastRingSpawn = timestamp;
                 }
 
-                if (stickman.x >= canvas.width * 0.38) {
+                if (stickman.x >= logicalWidth * 0.38) {
                     state = 'hooked';
                     stateElapsedTime = 0;
                     spawnPhoneSpark(stickman.x + 8, floorY - 20);
@@ -633,7 +654,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 stickman.yOffset = 0;
                 stickman.angle = 0;
 
-                if (stickman.x > canvas.width + 50) {
+                if (stickman.x > logicalWidth + 50) {
                     stickman.x = -50;
                     state = 'walking';
                     stateElapsedTime = 0;
@@ -832,49 +853,38 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.textBaseline = 'middle';
 
             let tagText = "";
-            let descText = "";
             let tagColor = "#c5a880";
 
             if (state === 'walking') {
                 tagText = "STAGE 1: SCROLL STOPPING";
-                descText = "Ad video hooks the passive viewer instantly.";
                 tagColor = "#8a8885";
             }
             else if (state === 'hooked') {
                 tagText = "STAGE 2: ATTENTION TRIGGERED";
-                descText = "Visual hooks break scrolling habit in seconds.";
                 tagColor = "#7ed6df";
             }
             else if (state === 'drawn') {
                 tagText = "STAGE 3: EMOTIONAL RESONANCE";
-                descText = "Storytelling connects to viewer desires & needs.";
                 tagColor = "#d4af37";
             }
             else if (state === 'clicking') {
                 tagText = "STAGE 4: CALL TO ACTION";
-                descText = "Sensory appeal drives immediate customer intent.";
                 tagColor = "#ffe66d";
             }
             else if (state === 'celebrating') {
                 tagText = "STAGE 5: SUCCESSFUL CONVERSION";
-                descText = "Audience is wowed, clicked to checkout your product.";
                 tagColor = "#2ecc71";
             }
             else if (state === 'walking_off') {
                 tagText = "CAMPAIGN METRIC: 100% RETENTION";
-                descText = "Every creative frame engineered for maximum revenue.";
                 tagColor = "#c5a880";
             }
 
             ctx.shadowBlur = 10;
             ctx.shadowColor = 'rgba(0, 0, 0, 0.5)';
             ctx.fillStyle = tagColor;
-            ctx.font = 'bold 10px "DM Mono", monospace';
-            ctx.fillText(tagText, canvas.width / 2, 45);
-
-            ctx.fillStyle = '#efede8';
-            ctx.font = '13px "Plus Jakarta Sans", sans-serif';
-            ctx.fillText(descText, canvas.width / 2, 68);
+            ctx.font = 'bold 12px "DM Mono", monospace';
+            ctx.fillText(tagText, logicalWidth / 2, 55);
 
             ctx.restore();
 

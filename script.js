@@ -95,6 +95,48 @@ document.addEventListener('DOMContentLoaded', () => {
             goal: "An elegant laboratory inspired ten second commercial for Glass Skin Essence to convey clinical skincare efficacy.",
             palette: ["#7ed6df", "#ffffff"],
             videoSrc: "https://vimeo.com/1199216911?fl=ip&fe=ec"
+        },
+        "6": {
+            title: "Vijaya Gummies UGC Ad",
+            tag: "9:16 UGC STYLE AD",
+            goal: "An authentic, relatable UGC style video ad for Vijaya Gummies to drive social engagement and build trust through creator-driven storytelling.",
+            palette: ["#ff6b6b", "#feca57", "#48dbfb"],
+            videoSrc: "https://vimeo.com/1205208643?fl=tl&fe=ec"
+        },
+        "7": {
+            title: "Black Tie Perfume",
+            tag: "9:16 LUXURY FRAGRANCE",
+            goal: "A sleek, cinematic luxury fragrance commercial for Black Tie Perfume to evoke sophistication, mystery, and premium brand appeal.",
+            palette: ["#1a1a2e", "#c5a880", "#e8d5b7"],
+            videoSrc: "https://vimeo.com/1205208645?fl=tl&fe=ec"
+        },
+        "8": {
+            title: "Contraband Perfume Ad",
+            tag: "9:16 FRAGRANCE COMMERCIAL",
+            goal: "A bold, edgy perfume commercial for Contraband fragrance to establish a rebellious and daring brand identity through dramatic visuals.",
+            palette: ["#2c3e50", "#e74c3c", "#f39c12"],
+            videoSrc: "https://vimeo.com/1205208644?fl=tl&fe=ec"
+        },
+        "9": {
+            title: "Gummy Bears Commercial",
+            tag: "9:16 CONFECTIONERY AD",
+            goal: "A vibrant, playful product commercial for Gummy Bears candy to create a fun, colorful, and mouth watering visual experience.",
+            palette: ["#ff4757", "#2ed573", "#ffa502"],
+            videoSrc: "https://vimeo.com/1205208642?fl=tl&fe=ec"
+        },
+        "10": {
+            title: "Ice Pop Ad",
+            tag: "9:16 FROZEN TREATS AD",
+            goal: "A refreshing, cool-toned summer commercial for Ice Pops to evoke the feeling of a perfect summer day and drive impulse purchases.",
+            palette: ["#74b9ff", "#a29bfe", "#fd79a8"],
+            videoSrc: "https://vimeo.com/1205208731?fl=tl&fe=ec"
+        },
+        "11": {
+            title: "Protein Bar UGC Ad",
+            tag: "9:16 UGC FITNESS AD",
+            goal: "A high energy, authentic UGC style fitness ad for a Protein Bar to target health conscious consumers with relatable, gym-ready content.",
+            palette: ["#6c5ce7", "#00b894", "#fdcb6e"],
+            videoSrc: "https://vimeo.com/1205210554?fl=tl&fe=ec"
         }
     };
 

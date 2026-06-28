@@ -64,9 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "1": {
             title: "FitFeast Protein Chips",
             tag: "9:16 PORTRAIT AD",
-            goal: "A dynamic, high energy product showcase for healthy Protein Chips to make the snack look mouth watering and irresistible.",
+            goal: "A dynamic, high energy product showcase for healthy Protein Chips.",
             palette: ["#d35400", "#c0392b", "#f1c40f"],
-            videoSrc: "https://vimeo.com/1199216701?fl=ip&fe=ec"
+            videoSrc: "https://vimeo.com/1205213101?h=139732205d"
         },
         "2": {
             title: "Mamaearth Ubtan Wash",
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "3": {
             title: "WOX Energy Drink",
             tag: "9:16 PRODUCT COMMERCIAL",
-            goal: "A bold, high contrast energy commercial featuring a red-can Energy Drink to create an intense brand feel.",
+            goal: "A bold, high contrast energy commercial featuring a red can Energy Drink to create an intense brand feel.",
             palette: ["#e74c3c", "#1a1a1a", "#f39c12"],
             videoSrc: "https://vimeo.com/1199216604?share=copy&fl=sv&fe=ci"
         },
@@ -99,44 +99,44 @@ document.addEventListener('DOMContentLoaded', () => {
         "6": {
             title: "Vijaya Gummies UGC Ad",
             tag: "9:16 UGC STYLE AD",
-            goal: "An authentic, relatable UGC style video ad for Vijaya Gummies to drive social engagement and build trust through creator-driven storytelling.",
-            palette: ["#ff6b6b", "#feca57", "#48dbfb"],
-            videoSrc: "https://vimeo.com/1205208643?fl=tl&fe=ec"
+            goal: "An authentic, relatable UGC style video ad for Vijaya Gummies to drive social engagement and build trust through creator driven storytelling.",
+            videoSrc: "https://vimeo.com/1205208643?h=c6cdee74ec"
         },
         "7": {
             title: "Black Tie Perfume",
             tag: "9:16 LUXURY FRAGRANCE",
-            goal: "A sleek, cinematic luxury fragrance commercial for Black Tie Perfume to evoke sophistication, mystery, and premium brand appeal.",
-            palette: ["#1a1a2e", "#c5a880", "#e8d5b7"],
-            videoSrc: "https://vimeo.com/1205208645?fl=tl&fe=ec"
+            goal: " To evoke a mystery and premium brand appeal.",
+            videoSrc: "https://vimeo.com/1205208645?h=d791cfe192"
         },
         "8": {
             title: "Contraband Perfume Ad",
             tag: "9:16 FRAGRANCE COMMERCIAL",
-            goal: "A bold, edgy perfume commercial for Contraband fragrance to establish a rebellious and daring brand identity through dramatic visuals.",
-            palette: ["#2c3e50", "#e74c3c", "#f39c12"],
-            videoSrc: "https://vimeo.com/1205208644?fl=tl&fe=ec"
+            goal: "A bold perfume commercial for Contraband fragrance.",
+            videoSrc: "https://vimeo.com/1205208644?h=271ac7f872"
         },
         "9": {
             title: "Gummy Bears Commercial",
             tag: "9:16 CONFECTIONERY AD",
-            goal: "A vibrant, playful product commercial for Gummy Bears candy to create a fun, colorful, and mouth watering visual experience.",
-            palette: ["#ff4757", "#2ed573", "#ffa502"],
-            videoSrc: "https://vimeo.com/1205208642?fl=tl&fe=ec"
+            goal: "To create a fun, colorful and vibrant visual experience.",
+            videoSrc: "https://vimeo.com/1205208642?h=21b3648906"
         },
         "10": {
             title: "Ice Pop Ad",
             tag: "9:16 FROZEN TREATS AD",
-            goal: "A refreshing, cool-toned summer commercial for Ice Pops to evoke the feeling of a perfect summer day and drive impulse purchases.",
-            palette: ["#74b9ff", "#a29bfe", "#fd79a8"],
-            videoSrc: "https://vimeo.com/1205208731?fl=tl&fe=ec"
+            goal: "An authentic UGC style ad to build trust among health conscious consumers.",
+            videoSrc: "https://vimeo.com/1205208731?h=96ac5be868"
         },
         "11": {
             title: "Protein Bar UGC Ad",
             tag: "9:16 UGC FITNESS AD",
-            goal: "A high energy, authentic UGC style fitness ad for a Protein Bar to target health conscious consumers with relatable, gym-ready content.",
-            palette: ["#6c5ce7", "#00b894", "#fdcb6e"],
-            videoSrc: "https://vimeo.com/1205210554?fl=tl&fe=ec"
+            goal: "A high energy, authentic UGC style fitness ad for a Protein Bar to target health conscious consumers with relatable, gym ready content.",
+            videoSrc: "https://vimeo.com/1205210554?h=0744ee55ab"
+        },
+        "12": {
+            title: "Dhavio Skincare UGC",
+            tag: "9:16 UGC BEAUTY CAMPAIGN",
+            goal: "An authentic UGC ad where a creator discovers the benefits of this skincare product.",
+            videoSrc: "https://vimeo.com/1205226813?h=5cbfe4baa9"
         }
     };
 
@@ -161,14 +161,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 lightboxGoal.textContent = data.goal;
 
                 // Clear and rebuild color palette swatches
+                const paletteContainer = document.getElementById('lightbox-palette-container');
                 lightboxPalette.innerHTML = '';
-                data.palette.forEach(color => {
-                    const swatch = document.createElement('div');
-                    swatch.className = 'palette-swatch';
-                    swatch.style.backgroundColor = color;
-                    swatch.title = color;
-                    lightboxPalette.appendChild(swatch);
-                });
+                if (data.palette && data.palette.length > 0) {
+                    paletteContainer.style.display = 'block';
+                    data.palette.forEach(color => {
+                        const swatch = document.createElement('div');
+                        swatch.className = 'palette-swatch';
+                        swatch.style.backgroundColor = color;
+                        swatch.title = color;
+                        lightboxPalette.appendChild(swatch);
+                    });
+                } else {
+                    paletteContainer.style.display = 'none';
+                }
 
                 // Handle Video Source (Check if Vimeo)
                 const screenContainer = document.getElementById('lightbox-screen-container');
@@ -186,6 +192,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     // Create Vimeo iframe (handles standard, player, or sharing links)
                     let vimeoId = '';
+                    let vimeoHash = '';
+
+                    // Extract 'h' security hash parameter if present
+                    try {
+                        const urlObj = new URL(data.videoSrc);
+                        vimeoHash = urlObj.searchParams.get('h') || '';
+                    } catch (e) {
+                        console.error('Invalid video URL', e);
+                    }
+
                     if (data.videoSrc.includes('player.vimeo.com/video/')) {
                         vimeoId = data.videoSrc.split('/video/')[1].split('?')[0];
                     } else {
@@ -193,7 +209,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     const iframe = document.createElement('iframe');
-                    iframe.src = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&background=0&muted=0&quality=1080p`;
+                    let iframeSrc = `https://player.vimeo.com/video/${vimeoId}?autoplay=1&loop=1&background=0&muted=0&quality=1080p`;
+                    if (vimeoHash) {
+                        iframeSrc += `&h=${vimeoHash}`;
+                    }
+                    iframe.src = iframeSrc;
                     iframe.style.width = '100%';
                     iframe.style.height = '100%';
                     iframe.style.border = 'none';
@@ -249,6 +269,81 @@ document.addEventListener('DOMContentLoaded', () => {
             closeLightbox();
         }
     });
+
+    // Category Filters Setup
+    const filterTabs = document.querySelectorAll('.filter-tab');
+    filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            // Remove active class from all tabs
+            filterTabs.forEach(t => t.classList.remove('active'));
+            // Add active class to clicked tab
+            tab.classList.add('active');
+
+            const filterValue = tab.getAttribute('data-filter');
+
+            workCards.forEach(card => {
+                const cardCategory = (card.getAttribute('data-category') || '').trim().toLowerCase();
+                const categories = cardCategory.split(/\s+/);
+
+                if (filterValue === 'all' || categories.includes(filterValue.toLowerCase())) {
+                    card.classList.remove('hide');
+                } else {
+                    card.classList.add('hide');
+                }
+            });
+
+            // Re-trigger scroll reveal calculations if any exist
+            if (typeof ScrollReveal !== 'undefined') {
+                ScrollReveal().sync();
+            }
+        });
+    });
+
+    // Deep Linking for Category Filters (e.g., site.com/perfumes or ?filter=perfume or #ugc)
+    setTimeout(() => {
+        const urlStr = window.location.href.toLowerCase();
+        let targetFilter = null;
+        
+        const queryParams = new URLSearchParams(window.location.search);
+        const pathPart = window.location.pathname.split('/').pop().toLowerCase();
+        const hashPart = window.location.hash.replace('#', '').toLowerCase();
+        
+        const possibleValues = [ hashPart, queryParams.get('filter'), queryParams.get('category'), pathPart ];
+        
+        for (let val of possibleValues) {
+            if (!val) continue;
+            val = val.trim();
+            const singular = val.endsWith('s') ? val.slice(0, -1) : val; // e.g. perfumes -> perfume
+            
+            const tab = document.querySelector(`.filter-tab[data-filter="${val}"]`) || 
+                        document.querySelector(`.filter-tab[data-filter="${singular}"]`);
+            if (tab) {
+                targetFilter = tab;
+                break;
+            }
+        }
+
+        // Fallback generic substring match
+        if (!targetFilter) {
+            const tabsArray = Array.from(filterTabs).filter(t => t.getAttribute('data-filter') !== 'all');
+            for (let tab of tabsArray) {
+                const f = tab.getAttribute('data-filter');
+                if (urlStr.includes('/' + f) || urlStr.includes('#' + f) || urlStr.includes('=' + f)) {
+                    targetFilter = tab;
+                    break;
+                }
+            }
+        }
+
+        if (targetFilter) {
+            targetFilter.click();
+            // Scroll to the work section automatically if deep-linked to a specific category
+            const workSection = document.getElementById('work');
+            if (workSection && (hashPart || pathPart || queryParams.toString())) {
+                workSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    }, 150);
 
     /* -----------------------------------------
        9. Creative Stickman Engagement Visualizer (2D Canvas)

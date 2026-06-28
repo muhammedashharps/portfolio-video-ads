@@ -23,7 +23,7 @@
         rel="stylesheet">
 
     <!-- Styling -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=2.2">
 
     <!-- Three.js for 3D Brain Visualization -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -41,9 +41,12 @@
             <a href="#" class="logo" id="nav-logo">
                 ASHHAR P.S
             </a>
-            <div class="nav-brand-text font-mono">
-                CREATIVE PORTFOLIO
-            </div>
+            <nav class="nav-links">
+                <a href="#work" class="nav-link font-mono">Projects</a>
+                <a href="#ad-types" class="nav-link font-mono">Ad Types</a>
+                <a href="#why-choose-me" class="nav-link font-mono">Advantages</a>
+                <a href="#contact" class="nav-link font-mono">Contact</a>
+            </nav>
         </div>
     </header>
 
@@ -55,7 +58,7 @@
 
                 <!-- Editorial Typographic Stack -->
                 <div class="hero-text-wrap reveal-on-scroll">
-                    <span class="hero-number font-mono">01/ CREATIVE DIRECTION</span>
+                    <span class="hero-number font-mono">01 / CREATIVE DIRECTION</span>
                     <h1 class="hero-title">
                         <span class="font-sans">FUTURE PROOF</span> <br>
                         <span class="font-serif-italic">commercials.</span> <br>
@@ -69,7 +72,7 @@
 
                 <!-- Scroll Down Archive Indicator -->
                 <a href="#work" class="archive-scroll-indicator" id="scroll-cta">
-                    <span class="scroll-tag font-mono">SCROLL TO VIEW THE ARCHIVE</span>
+                    <span class="scroll-tag font-mono">SCROLL TO VIEW PAST WORKS & COLLABS</span>
                     <svg class="scroll-arrow" viewBox="0 0 24 24" width="16" height="16">
                         <line x1="12" y1="5" x2="12" y2="19" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
@@ -88,21 +91,28 @@
             <div class="container">
 
                 <div class="section-header reveal-on-scroll">
-                    <span class="section-tag font-mono">02/ PORTFOLIO ARCHIVE</span>
+                    <span class="section-tag font-mono">02 / PORTFOLIO ARCHIVE</span>
                     <h2 class="section-title">Selected Works</h2>
+                </div>
+
+                <!-- Category Filter Tabs -->
+                <div class="work-filter-tabs reveal-on-scroll" id="work-filters">
+                    <button class="filter-tab active" data-filter="all">All</button>
+                    <button class="filter-tab" data-filter="food">Food Products</button>
+                    <button class="filter-tab" data-filter="ugc">UGC</button>
+                    <button class="filter-tab" data-filter="perfume">Perfumes</button>
+                    <button class="filter-tab" data-filter="skincare">Skincare</button>
                 </div>
 
                 <!-- 9:16 Vertical Video Grid -->
                 <div class="work-grid reveal-on-scroll">
 
-                    <!-- Card 1: 7up Pink Lemonade -->
-                    <div class="work-card" data-project-id="4">
+                    <!-- Card 1: Ice Pop Ad (ID 10) -->
+                    <div class="work-card" data-project-id="10" data-category="food ugc">
                         <div class="work-card-media">
                             <video class="work-card-video" autoplay loop muted playsinline
-                                poster="assets/lemonade_ad_poster.png">
-                                <source
-                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
-                                    type="video/mp4">
+                                poster="assets/ice_pops_ugc.png">
+                                <source src="" type="video/mp4">
                             </video>
                             <div class="work-card-overlay"></div>
                             <div class="play-indicator">
@@ -115,13 +125,13 @@
                         </div>
                         <div class="work-card-details">
                             <span class="work-card-tag font-mono">9:16 PORTRAIT</span>
-                            <h3 class="work-card-title font-serif">7up Lemonade</h3>
-                            <span class="work-card-tech font-mono">Beverage</span>
+                            <h3 class="work-card-title font-serif">Ice Pop</h3>
+                            <span class="work-card-tech font-mono">Frozen Treats</span>
                         </div>
                     </div>
 
-                    <!-- Card 2: WOX Energy Drink -->
-                    <div class="work-card" data-project-id="3">
+                    <!-- Card 2: WOX Energy Drink (ID 3) -->
+                    <div class="work-card" data-project-id="3" data-category="food">
                         <div class="work-card-media">
                             <video class="work-card-video" autoplay loop muted playsinline
                                 poster="assets/energy_ad_poster.png">
@@ -145,8 +155,102 @@
                         </div>
                     </div>
 
-                    <!-- Card 3: FitFeast Protein Chips -->
-                    <div class="work-card" data-project-id="1">
+                    <!-- Card 3: 7up Pink Lemonade (ID 4) -->
+                    <div class="work-card" data-project-id="4" data-category="food">
+                        <div class="work-card-media">
+                            <video class="work-card-video" autoplay loop muted playsinline
+                                poster="assets/lemonade_ad_poster.png">
+                                <source
+                                    src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"
+                                    type="video/mp4">
+                            </video>
+                            <div class="work-card-overlay"></div>
+                            <div class="play-indicator">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                                </svg>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                            </div>
+                        </div>
+                        <div class="work-card-details">
+                            <span class="work-card-tag font-mono">9:16 PORTRAIT</span>
+                            <h3 class="work-card-title font-serif">7up Lemonade</h3>
+                            <span class="work-card-tech font-mono">Beverage</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Contraband Perfume Ad (ID 8) -->
+                    <div class="work-card" data-project-id="8" data-category="perfume">
+                        <div class="work-card-media">
+                            <video class="work-card-video" autoplay loop muted playsinline
+                                poster="assets/contraband_preview.png">
+                                <source src="" type="video/mp4">
+                            </video>
+                            <div class="work-card-overlay"></div>
+                            <div class="play-indicator">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                                </svg>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                            </div>
+                        </div>
+                        <div class="work-card-details">
+                            <span class="work-card-tag font-mono">9:16 PORTRAIT</span>
+                            <h3 class="work-card-title font-serif">Contraband Perfume</h3>
+                            <span class="work-card-tech font-mono">Fragrance</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: Gummy Bears Commercial (ID 9) -->
+                    <div class="work-card" data-project-id="9" data-category="food">
+                        <div class="work-card-media">
+                            <video class="work-card-video" autoplay loop muted playsinline
+                                poster="assets/gummy_bears.png.png">
+                                <source src="" type="video/mp4">
+                            </video>
+                            <div class="work-card-overlay"></div>
+                            <div class="play-indicator">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                                </svg>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                            </div>
+                        </div>
+                        <div class="work-card-details">
+                            <span class="work-card-tag font-mono">9:16 PORTRAIT</span>
+                            <h3 class="work-card-title font-serif">Gummy Bears</h3>
+                            <span class="work-card-tech font-mono">Confectionery</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Protein Bar UGC Ad (ID 11) -->
+                    <div class="work-card" data-project-id="11" data-category="food ugc">
+                        <div class="work-card-media">
+                            <video class="work-card-video" autoplay loop muted playsinline
+                                poster="assets/protienbars.png">
+                                <source src="" type="video/mp4">
+                            </video>
+                            <div class="work-card-overlay"></div>
+                            <div class="play-indicator">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                                </svg>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                            </div>
+                        </div>
+                        <div class="work-card-details">
+                            <span class="work-card-tag font-mono">9:16 UGC</span>
+                            <h3 class="work-card-title font-serif">Protein Bar</h3>
+                            <span class="work-card-tech font-mono">Health Food</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 7: FitFeast Protein Chips (ID 1) -->
+                    <div class="work-card" data-project-id="1" data-category="food">
                         <div class="work-card-media">
                             <video class="work-card-video" autoplay loop muted playsinline
                                 poster="assets/chips_ad_poster.png">
@@ -170,8 +274,31 @@
                         </div>
                     </div>
 
-                    <!-- Card 4: Mamaearth Ubtan Face Wash -->
-                    <div class="work-card" data-project-id="2">
+                    <!-- Card 8: Vijaya Gummies UGC Ad (ID 6) -->
+                    <div class="work-card" data-project-id="6" data-category="food ugc">
+                        <div class="work-card-media">
+                            <video class="work-card-video" autoplay loop muted playsinline
+                                poster="assets/gummespreview.png">
+                                <source src="" type="video/mp4">
+                            </video>
+                            <div class="work-card-overlay"></div>
+                            <div class="play-indicator">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                                </svg>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                            </div>
+                        </div>
+                        <div class="work-card-details">
+                            <span class="work-card-tag font-mono">9:16 UGC</span>
+                            <h3 class="work-card-title font-serif">Vijaya Gummies</h3>
+                            <span class="work-card-tech font-mono">Gummies</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 9: Mamaearth Ubtan Face Wash (ID 2) -->
+                    <div class="work-card" data-project-id="2" data-category="skincare">
                         <div class="work-card-media">
                             <video class="work-card-video" autoplay loop muted playsinline
                                 poster="assets/facewash_ad_poster.png">
@@ -195,8 +322,54 @@
                         </div>
                     </div>
 
-                    <!-- Card 5: Dr. Rashel Glass Skin Essence -->
-                    <div class="work-card" data-project-id="5">
+                    <!-- Card 10: Black Tie Perfume (ID 7) -->
+                    <div class="work-card" data-project-id="7" data-category="perfume">
+                        <div class="work-card-media">
+                            <video class="work-card-video" autoplay loop muted playsinline
+                                poster="assets/black_tie_perfume.png.png">
+                                <source src="" type="video/mp4">
+                            </video>
+                            <div class="work-card-overlay"></div>
+                            <div class="play-indicator">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                                </svg>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                            </div>
+                        </div>
+                        <div class="work-card-details">
+                            <span class="work-card-tag font-mono">9:16 LUXURY</span>
+                            <h3 class="work-card-title font-serif">Black Tie Perfume</h3>
+                            <span class="work-card-tech font-mono">Fragrance</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 11: Dhavio Skincare UGC (ID 12) -->
+                    <div class="work-card" data-project-id="12" data-category="skincare ugc">
+                        <div class="work-card-media">
+                            <video class="work-card-video" autoplay loop muted playsinline
+                                poster="assets/dhavio_ad_preview.png">
+                                <source src="" type="video/mp4">
+                            </video>
+                            <div class="work-card-overlay"></div>
+                            <div class="play-indicator">
+                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                                </svg>
+                                <span class="font-mono"
+                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
+                            </div>
+                        </div>
+                        <div class="work-card-details">
+                            <span class="work-card-tag font-mono">9:16 UGC</span>
+                            <h3 class="work-card-title font-serif">Dhavio Skincare</h3>
+                            <span class="work-card-tech font-mono">Skin Care</span>
+                        </div>
+                    </div>
+
+                    <!-- Card 12: Dr. Rashel Glass Skin Essence (ID 5) -->
+                    <div class="work-card" data-project-id="5" data-category="skincare">
                         <div class="work-card-media">
                             <video class="work-card-video" autoplay loop muted playsinline
                                 poster="assets/essence_ad_poster.png">
@@ -220,136 +393,44 @@
                         </div>
                     </div>
 
-                    <!-- Card 6: Vijaya Gummies UGC Ad -->
-                    <div class="work-card" data-project-id="6">
-                        <div class="work-card-media">
-                            <video class="work-card-video" autoplay loop muted playsinline>
-                                <source src="" type="video/mp4">
-                            </video>
-                            <div class="work-card-overlay"></div>
-                            <div class="play-indicator">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                                </svg>
-                                <span class="font-mono"
-                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
-                            </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Ad Types Section -->
+        <section class="ad-types-section" id="ad-types">
+            <div class="container">
+
+                <div class="section-header reveal-on-scroll">
+                    <span class="section-tag font-mono">03 / PRODUCTION FORMATS</span>
+                    <h2 class="section-title">Core Ad Types</h2>
+                </div>
+
+                <div class="ad-types-grid reveal-on-scroll">
+                    
+                    <!-- Card 1: Authentic UGC -->
+                    <div class="ad-type-card">
+                        <div class="ad-type-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                                <circle cx="12" cy="7" r="4" />
+                            </svg>
                         </div>
-                        <div class="work-card-details">
-                            <span class="work-card-tag font-mono">9:16 UGC</span>
-                            <h3 class="work-card-title font-serif">Vijaya Gummies</h3>
-                            <span class="work-card-tech font-mono">Gummies</span>
-                        </div>
+                        <h3 class="ad-type-title font-serif">Authentic UGC</h3>
+                        <p class="ad-type-desc">Raw, creator-led social ads engineered to look native to the scroll. Designed to break the fourth wall and build rapid audience trust.</p>
                     </div>
 
-                    <!-- Card 7: Black Tie Perfume -->
-                    <div class="work-card" data-project-id="7">
-                        <div class="work-card-media">
-                            <video class="work-card-video" autoplay loop muted playsinline>
-                                <source src="" type="video/mp4">
-                            </video>
-                            <div class="work-card-overlay"></div>
-                            <div class="play-indicator">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                                </svg>
-                                <span class="font-mono"
-                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
-                            </div>
+                    <!-- Card 2: Cinematic Showcase -->
+                    <div class="ad-type-card">
+                        <div class="ad-type-icon">
+                            <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <polygon points="23 7 16 12 23 17 23 7" />
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                            </svg>
                         </div>
-                        <div class="work-card-details">
-                            <span class="work-card-tag font-mono">9:16 LUXURY</span>
-                            <h3 class="work-card-title font-serif">Black Tie Perfume</h3>
-                            <span class="work-card-tech font-mono">Fragrance</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 8: Contraband Perfume Ad -->
-                    <div class="work-card" data-project-id="8">
-                        <div class="work-card-media">
-                            <video class="work-card-video" autoplay loop muted playsinline>
-                                <source src="" type="video/mp4">
-                            </video>
-                            <div class="work-card-overlay"></div>
-                            <div class="play-indicator">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                                </svg>
-                                <span class="font-mono"
-                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
-                            </div>
-                        </div>
-                        <div class="work-card-details">
-                            <span class="work-card-tag font-mono">9:16 PORTRAIT</span>
-                            <h3 class="work-card-title font-serif">Contraband Perfume</h3>
-                            <span class="work-card-tech font-mono">Fragrance</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 9: Gummy Bears Commercial -->
-                    <div class="work-card" data-project-id="9">
-                        <div class="work-card-media">
-                            <video class="work-card-video" autoplay loop muted playsinline>
-                                <source src="" type="video/mp4">
-                            </video>
-                            <div class="work-card-overlay"></div>
-                            <div class="play-indicator">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                                </svg>
-                                <span class="font-mono"
-                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
-                            </div>
-                        </div>
-                        <div class="work-card-details">
-                            <span class="work-card-tag font-mono">9:16 PORTRAIT</span>
-                            <h3 class="work-card-title font-serif">Gummy Bears</h3>
-                            <span class="work-card-tech font-mono">Confectionery</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 10: Ice Pop Ad -->
-                    <div class="work-card" data-project-id="10">
-                        <div class="work-card-media">
-                            <video class="work-card-video" autoplay loop muted playsinline>
-                                <source src="" type="video/mp4">
-                            </video>
-                            <div class="work-card-overlay"></div>
-                            <div class="play-indicator">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                                </svg>
-                                <span class="font-mono"
-                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
-                            </div>
-                        </div>
-                        <div class="work-card-details">
-                            <span class="work-card-tag font-mono">9:16 PORTRAIT</span>
-                            <h3 class="work-card-title font-serif">Ice Pop</h3>
-                            <span class="work-card-tech font-mono">Frozen Treats</span>
-                        </div>
-                    </div>
-
-                    <!-- Card 11: Protein Bar UGC Ad -->
-                    <div class="work-card" data-project-id="11">
-                        <div class="work-card-media">
-                            <video class="work-card-video" autoplay loop muted playsinline>
-                                <source src="" type="video/mp4">
-                            </video>
-                            <div class="work-card-overlay"></div>
-                            <div class="play-indicator">
-                                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                                    <polygon points="6 4 20 12 6 20 6 4"></polygon>
-                                </svg>
-                                <span class="font-mono"
-                                    style="font-size: 0.65rem; letter-spacing: 0.1em; font-weight: 600;">PLAY AD</span>
-                            </div>
-                        </div>
-                        <div class="work-card-details">
-                            <span class="work-card-tag font-mono">9:16 UGC</span>
-                            <h3 class="work-card-title font-serif">Protein Bar</h3>
-                            <span class="work-card-tech font-mono">Health Food</span>
-                        </div>
+                        <h3 class="ad-type-title font-serif">Cinematic Showcase</h3>
+                        <p class="ad-type-desc">Hyper-realistic, high-fidelity brand advertisements utilizing luxury art direction, and macro studio aesthetics.</p>
                     </div>
 
                 </div>
@@ -365,7 +446,7 @@
 
                 <!-- Section Header -->
                 <div class="section-header reveal-on-scroll">
-                    <span class="section-tag font-mono">02.5/ ENGAGEMENT DYNAMICS</span>
+                    <span class="section-tag font-mono">04 / ENGAGEMENT DYNAMICS</span>
                     <h2 class="section-title">Engineered for Response</h2>
                 </div>
 
@@ -443,7 +524,7 @@
 
                 <!-- Left Sticky Pane -->
                 <div class="info-sticky-header reveal-on-scroll">
-                    <span class="section-tag font-mono">03 / CORE CAPABILITIES</span>
+                    <span class="section-tag font-mono">05 / CORE CAPABILITIES</span>
                     <h2 class="section-title">The AI Production Advantage.</h2>
                 </div>
 
@@ -489,7 +570,7 @@
             <div class="container brief-container">
 
                 <div class="brief-header reveal-on-scroll">
-                    <span class="section-tag font-mono">04 / CONNECT</span>
+                    <span class="section-tag font-mono">06 / CONNECT</span>
                     <h2 class="brief-title">Ready to elevate your brand?</h2>
                     <p class="brief-subtitle">Let's discuss your product. Reach out directly on Upwork or LinkedIn to
                         get started.</p>
@@ -563,7 +644,7 @@
 
 
 
-                    <div class="lightbox-section">
+                    <div class="lightbox-section" id="lightbox-palette-container">
                         <h4 class="lightbox-section-label font-mono">COLOR PALETTE</h4>
                         <div class="palette-swatches" id="lightbox-palette"
                             style="display: flex; gap: 0.75rem; margin-top: 0.5rem;">
@@ -577,7 +658,7 @@
     </div>
 
     <!-- Script -->
-    <script src="script.js"></script>
+    <script src="script.js?v=2.4"></script>
 </body>
 
 </html>
